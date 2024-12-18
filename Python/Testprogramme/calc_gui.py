@@ -1,19 +1,19 @@
 import tkinter as tk
 
 def add():
-    result.set(float(entry1.get()) + float(entry2.get()))
+    result.set(str(float(entry1.get()) + float(entry2.get())))
 
 def subtract():
-    result.set(float(entry1.get()) - float(entry2.get()))
+    result.set(str(float(entry1.get()) - float(entry2.get())))
 
 def multiply():
-    result.set(float(entry1.get()) * float(entry2.get()))
+    result.set(str(float(entry1.get()) * float(entry2.get())))
 
 def divide():
     if float(entry2.get()) == 0:
         result.set("Fehler: Division durch Null")
     else:
-        result.set(float(entry1.get()) / float(entry2.get()))
+        result.set(str(float(entry1.get()) / float(entry2.get())))
 
 # Hauptfenster erstellen
 root = tk.Tk()
