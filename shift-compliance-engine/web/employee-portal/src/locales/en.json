@@ -1,0 +1,15 @@
+{
+  "appTitle": "Employee portal",
+  "login": "Sign in",
+  "email": "Email",
+  "password": "Password",
+  "roster": "Roster",
+  "year": "Year",
+  "month": "Month",
+  "load": "Load",
+  "logout": "Sign out",
+  "locale": "Language",
+  "colDate": "Date",
+  "colTier": "Shift",
+  "colCode": "Code"
+}

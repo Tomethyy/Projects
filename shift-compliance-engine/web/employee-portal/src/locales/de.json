@@ -1,0 +1,15 @@
+{
+  "appTitle": "Mitarbeiterportal",
+  "login": "Anmelden",
+  "email": "E-Mail",
+  "password": "Passwort",
+  "roster": "Dienstplan",
+  "year": "Jahr",
+  "month": "Monat",
+  "load": "Laden",
+  "logout": "Abmelden",
+  "locale": "Sprache",
+  "colDate": "Datum",
+  "colTier": "Schicht",
+  "colCode": "Code"
+}

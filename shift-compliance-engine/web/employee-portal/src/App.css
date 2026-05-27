@@ -1,0 +1,55 @@
+.layout {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.error {
+  color: #b00020;
+}
+.hint {
+  color: #555;
+  font-size: 0.9rem;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+.roster-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+.roster-table th,
+.roster-table td {
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+.roster-table th {
+  background: #f7f7f7;
+}
