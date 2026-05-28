@@ -1,23 +1,27 @@
 export const refuelRates = [
   {
     name: 'Emergency Pad Refuel',
-    price: '2,500 aUEC base + 35% premium',
-    description: 'Priority response for stranded pilots. Gemini dispatched within 10 minutes.',
+    price: '50,000 aUEC minimum + 35% premium',
+    description:
+      'Priority response for stranded pilots. Gemini dispatched within 10 minutes. Fuel billed per SCU: Quantum 1,200 aUEC, Hydrogen 250 aUEC.',
   },
   {
     name: 'Standard Hangar Hookup',
-    price: '1,800 aUEC flat',
-    description: 'Scheduled refuel at your hangar or designated pad. Includes QT fuel top-off.',
+    price: '50,000 aUEC minimum',
+    description:
+      'Scheduled refuel at your hangar or designated pad. Service fee covers hookup; fuel per SCU at market: Quantum 1,200 aUEC, Hydrogen 250 aUEC.',
   },
   {
     name: 'Convoy / Org Bulk',
-    price: '12 aUEC per SCU (min. 500 SCU)',
-    description: 'Volume pricing for org fleets. Dedicated tanker slot and manifest logging.',
+    price: '1,100 aUEC/SCU QT · 225 aUEC/SCU H2 (min. 500 SCU)',
+    description:
+      'Volume pricing below street rates for org fleets. 50,000 aUEC minimum service fee per call. Dedicated tanker slot and manifest logging.',
   },
   {
     name: 'Rest Stop Quick Fill',
-    price: '950 aUEC',
-    description: 'Hydrogen and quantum fuel at supported Stanton rest stops.',
+    price: '50,000 aUEC minimum',
+    description:
+      'Hydrogen and quantum fuel at supported Stanton rest stops. Per SCU: Quantum 1,200 aUEC, Hydrogen 250 aUEC.',
   },
 ] as const;
 
