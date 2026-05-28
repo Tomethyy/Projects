@@ -34,4 +34,11 @@ export const testimonials = [
     ship: 'Prospector',
     org: 'Fenn Mining Co.',
   },
+  {
+    quote:
+      "Totally unmatched refueling speed at Port Tressler! Just make sure you request your fuel before the pilot goes on his bathroom break or you'll be waiting on a server-hop to get him out of the damn head. Nonetheless, will absolutely contract again <3",
+    author: "tom's wife",
+    ship: 'N/A',
+    org: 'the bompany',
+  },
 ] as const;
