@@ -28,21 +28,21 @@ export const refuelRates = [
 export const bankingRates = [
   {
     name: 'Short-Term Ship Loan',
-    price: '165% APR',
+    price: '165% APR · 2-week standard',
     description:
-      'Financing for hull upgrades and component refits. Terms from 4–24 weeks. Example: 500,000 aUEC over 12 weeks ≈ 114,000 aUEC interest.',
+      'Financing for hull upgrades and component refits. Standard 2 weeks, max 4. Example: 500,000 aUEC / 2 weeks at 165% APR ≈ 24,000 aUEC interest.',
   },
   {
     name: 'Org Line of Credit',
-    price: '95% APR',
+    price: '120% APR · up to 4 weeks',
     description:
-      'Revolving credit for established orgs. Preferential vs. retail. Collateral: fleet assets or aUEC reserve.',
+      'Revolving credit for established orgs (15% APR floor). Preferential vs. retail. Collateral: fleet assets or aUEC reserve.',
   },
   {
     name: 'Emergency Bridge Loan',
-    price: '220% APR',
+    price: '220% APR · 2-week term',
     description:
-      'Fast cash for insurance deductibles and emergency repairs. 48h approval. Highest Reserve desk rate.',
+      'Fast cash for insurance deductibles and emergency repairs. 48h approval. Due within 2 weeks; extensions to 4 by desk approval only.',
   },
   {
     name: 'Collateral Accepted',

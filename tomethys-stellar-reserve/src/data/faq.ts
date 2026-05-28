@@ -17,7 +17,7 @@ export const faqItems: { category: FaqCategory; question: string; answer: string
     category: 'Loans',
     question: 'What are typical loan terms?',
     answer:
-      'Terms are measured in in-universe weeks (4–24). APR ranges from 95% (org credit) to 220% (emergency bridge); standard ship loans run 165% APR. A 500,000 aUEC / 12-week loan typically returns 100,000+ aUEC to the Reserve. Use the loan calculator for estimates.',
+      'Standard term is 2 weeks (maximum 4). APR starts at 15% minimum; Reserve desk standard is 165% APR. Org credit from 120%, emergency bridge up to 220%. Example: 500,000 aUEC for 2 weeks at 165% ≈ 24,000 aUEC interest. Use the loan calculator for estimates.',
   },
   {
     category: 'Loans',
