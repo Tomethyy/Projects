@@ -1,19 +1,10 @@
 My personal learning projects from Codecademy.
 
-## Tomethy's Stellar Reserve (new)
+## Projects
 
-Static Astro website for **Tomethy's Stellar Reserve** — a Star Citizen fueling contractor and ship financing bank operated by Tomethy.
-
-### Run locally
-
-```bash
-npm install
-cp .env.example .env
-npm run dev
-```
-
-### Deploy
-
-- Build: `npm run build`
-- Output: `dist/`
-- Hosting: Netlify or Vercel
+| Folder | Description |
+|--------|-------------|
+| [`tomethys-stellar-reserve/`](tomethys-stellar-reserve/) | Star Citizen RP site — fueling contractor & bank (Astro) |
+| [`shift-compliance-engine/`](shift-compliance-engine/) | Shift compliance engine MVP |
+| [`C#/`](C%23/) | C# learning projects |
+| [`Python/`](Python/) | Python learning projects |
