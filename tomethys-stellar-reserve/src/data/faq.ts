@@ -17,7 +17,7 @@ export const faqItems: { category: FaqCategory; question: string; answer: string
     category: 'Loans',
     question: 'What are typical loan terms?',
     answer:
-      'Terms are measured in in-universe weeks (4–24). APR ranges from 6.2% (org credit) to 14% (emergency bridge). Use the loan calculator for estimates.',
+      'Terms are measured in in-universe weeks (4–24). APR ranges from 95% (org credit) to 220% (emergency bridge); standard ship loans run 165% APR. A 500,000 aUEC / 12-week loan typically returns 100,000+ aUEC to the Reserve. Use the loan calculator for estimates.',
   },
   {
     category: 'Loans',
