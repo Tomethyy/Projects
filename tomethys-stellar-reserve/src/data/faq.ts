@@ -17,7 +17,7 @@ export const faqItems: { category: FaqCategory; question: string; answer: string
     category: 'Loans',
     question: 'What are typical loan terms?',
     answer:
-      'Standard term is 2 weeks (maximum 4). APR starts at 15% minimum; Reserve desk standard is 165% APR. Org credit from 120%, emergency bridge up to 220%. Example: 500,000 aUEC for 2 weeks at 165% ≈ 24,000 aUEC interest. Use the loan calculator for estimates.',
+      'Standard term is 2 weeks (maximum 4). Interest is calculated as principal × APR% × weeks (not compound annual). Desk standard is 10% APR — e.g. 500,000 aUEC for 2 weeks = 100,000 aUEC interest. Org credit from 8%, emergency bridge 12%. Use the loan calculator for estimates.',
   },
   {
     category: 'Loans',
