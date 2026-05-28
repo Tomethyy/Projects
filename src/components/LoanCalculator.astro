@@ -1,0 +1,154 @@
+---
+---
+
+<section id="loan-calculator" class="section loan-section">
+  <div class="container">
+    <p class="section-label">// Finance Terminal</p>
+    <h2 class="section-title">Loan Calculator</h2>
+    <div class="panel calculator-panel">
+      <form id="loan-form" class="loan-form">
+        <div class="form-row">
+          <label for="loan-amount">Loan amount (aUEC)</label>
+          <input type="number" id="loan-amount" name="amount" min="1000" step="1000" value="500000" required />
+        </div>
+        <div class="form-row">
+          <label for="loan-apr">APR (%)</label>
+          <input type="number" id="loan-apr" name="apr" min="1" max="30" step="0.1" value="8.5" required />
+        </div>
+        <div class="form-row">
+          <label for="loan-term">Term (weeks)</label>
+          <input type="number" id="loan-term" name="term" min="4" max="52" value="12" required />
+        </div>
+        <div class="form-row">
+          <label for="loan-down">Down payment (aUEC)</label>
+          <input type="number" id="loan-down" name="down" min="0" step="1000" value="0" />
+        </div>
+      </form>
+      <div class="results mono" id="loan-results" aria-live="polite">
+        <div class="result-row">
+          <span>Principal financed</span>
+          <span id="out-principal">—</span>
+        </div>
+        <div class="result-row">
+          <span>Payment per week</span>
+          <span id="out-payment">—</span>
+        </div>
+        <div class="result-row">
+          <span>Total interest</span>
+          <span id="out-interest">—</span>
+        </div>
+        <div class="result-row highlight">
+          <span>Total cost</span>
+          <span id="out-total">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">Estimates for in-universe roleplay. Terms subject to Reserve desk approval.</p>
+  </div>
+</section>
+
+<script>
+  import { calculateLoan } from '../scripts/loanCalculator';
+
+  const form = document.getElementById('loan-form') as HTMLFormElement;
+  const outPrincipal = document.getElementById('out-principal')!;
+  const outPayment = document.getElementById('out-payment')!;
+  const outInterest = document.getElementById('out-interest')!;
+  const outTotal = document.getElementById('out-total')!;
+
+  const formatAuec = (n: number) =>
+    new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(Math.round(n)) + ' aUEC';
+
+  const update = () => {
+    const amount = Number((document.getElementById('loan-amount') as HTMLInputElement).value);
+    const apr = Number((document.getElementById('loan-apr') as HTMLInputElement).value);
+    const term = Number((document.getElementById('loan-term') as HTMLInputElement).value);
+    const down = Number((document.getElementById('loan-down') as HTMLInputElement).value);
+    const result = calculateLoan({ amount, apr, termWeeks: term, downPayment: down });
+    outPrincipal.textContent = formatAuec(result.principal);
+    outPayment.textContent = formatAuec(result.paymentPerPeriod);
+    outInterest.textContent = formatAuec(result.totalInterest);
+    outTotal.textContent = formatAuec(result.totalCost);
+  };
+
+  form?.querySelectorAll('input').forEach((input) => input.addEventListener('input', update));
+  update();
+</script>
+
+<style>
+  .loan-section {
+    background: rgba(0, 40, 80, 0.06);
+  }
+
+  .calculator-panel {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .calculator-panel {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .loan-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .form-row input {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--accent-cyan-dim);
+    border-radius: var(--radius);
+  }
+
+  .form-row input:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+  }
+
+  .results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--accent-cyan-dim);
+    font-size: 0.9rem;
+  }
+
+  .result-row.highlight {
+    color: var(--accent-cyan);
+    font-weight: 600;
+    border-bottom: none;
+    font-size: 1rem;
+  }
+
+  .disclaimer {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+</style>

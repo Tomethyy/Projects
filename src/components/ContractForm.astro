@@ -1,0 +1,244 @@
+---
+import { site } from '../config/site';
+import { contractTypeOptions } from '../data/contractTypes';
+
+interface Props {
+  initialType?: string;
+}
+
+const { initialType = '' } = Astro.props;
+const formspreeAction = site.formspreeId
+  ? site.formspreeId.startsWith('http')
+    ? site.formspreeId
+    : `https://formspree.io/f/${site.formspreeId}`
+  : undefined;
+---
+
+<div class="contract-form-wrap">
+  {!formspreeAction && (
+    <div class="panel form-notice" role="alert">
+      <p>
+        Formspree is not configured. Set <code>PUBLIC_FORMSPREE_ID</code> in your <code>.env</code> file.
+        See README for setup instructions.
+      </p>
+    </div>
+  )}
+
+  <form
+    id="contract-form"
+    class="panel contract-form"
+    action={formspreeAction}
+    method="POST"
+    data-formspree={formspreeAction ? 'true' : 'false'}
+  >
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="contract-type">Contract type</label>
+        <select id="contract-type" name="contract_type" required>
+          <option value="">Select type…</option>
+          {contractTypeOptions.map(({ value, label }) => (
+            <option value={value} selected={initialType === value}>{label}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="handle">Character name / Handle</label>
+        <input type="text" id="handle" name="handle" required placeholder="Tomethy" />
+      </div>
+
+      <div class="form-field">
+        <label for="organization">Organization (optional)</label>
+        <input type="text" id="organization" name="organization" placeholder="Org tag or Independent" />
+      </div>
+
+      <div class="form-field">
+        <label for="location">Location / System</label>
+        <input type="text" id="location" name="location" required placeholder="Port Tressler, Stanton" />
+      </div>
+
+      <div class="form-field full">
+        <label for="ships">Ship(s) involved</label>
+        <input type="text" id="ships" name="ships" placeholder="Starfarer Gemini, Cutlass Black, etc." />
+      </div>
+
+      <div class="form-field">
+        <label for="urgency">Urgency</label>
+        <select id="urgency" name="urgency" required>
+          <option value="standard">Standard</option>
+          <option value="emergency">Emergency</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="contact-method">Preferred contact</label>
+        <select id="contact-method" name="contact_method" required>
+          <option value="discord">Discord</option>
+          <option value="ingame">In-game</option>
+          <option value="email">Email</option>
+        </select>
+      </div>
+
+      <div class="form-field full">
+        <label for="details">Contract details</label>
+        <textarea
+          id="details"
+          name="details"
+          rows="6"
+          required
+          placeholder="Describe your refuel request, loan application, or recruitment interest…"
+        ></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary submit-btn" disabled={!formspreeAction}>
+      Transmit Contract
+    </button>
+  </form>
+
+  <div id="form-success" class="panel success-panel" hidden>
+    <h3>Contract logged</h3>
+    <p>
+      Your submission has been received by the Reserve desk. Expect a response within {site.responseTime}.
+    </p>
+    <a href="/" class="btn btn-secondary">Return to home</a>
+  </div>
+</div>
+
+<script define:vars={{ initialType }}>
+  const params = new URLSearchParams(window.location.search);
+  const typeParam = params.get('type') || initialType;
+  const select = document.getElementById('contract-type');
+  if (typeParam && select) {
+    select.value = typeParam;
+  }
+
+  const form = document.getElementById('contract-form');
+  const success = document.getElementById('form-success');
+
+  form?.addEventListener('submit', async (e) => {
+    if (form.dataset.formspree !== 'true') {
+      e.preventDefault();
+      return;
+    }
+
+    e.preventDefault();
+    const data = new FormData(form);
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' },
+    });
+
+    if (response.ok) {
+      form.hidden = true;
+      success.hidden = false;
+    } else {
+      alert('Transmission failed. Try again or contact the Reserve desk directly.');
+    }
+  });
+</script>
+
+<style>
+  .contract-form-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .form-notice {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-color: var(--accent-amber);
+  }
+
+  .form-notice p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent-amber);
+  }
+
+  .form-notice code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+
+  .contract-form {
+    padding: 2rem;
+  }
+
+  .form-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-field.full {
+    grid-column: 1 / -1;
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--accent-cyan-dim);
+    border-radius: var(--radius);
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .success-panel {
+    padding: 2rem;
+    text-align: center;
+    border-color: var(--accent-green);
+  }
+
+  .success-panel h3 {
+    color: var(--accent-green);
+    margin-bottom: 0.75rem;
+  }
+
+  .success-panel p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+</style>

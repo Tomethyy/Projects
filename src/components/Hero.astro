@@ -1,0 +1,106 @@
+---
+import { site } from '../config/site';
+import { flagship } from '../data/fleet';
+---
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src={flagship.heroImage} alt="Starfarer Gemini — primary refuel platform" class="hero-img" />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="container hero-content">
+    <p class="section-label">Stanton Sector // Licensed Contractor</p>
+    <h1>{site.name}</h1>
+    <p class="tagline">{site.tagline}</p>
+    <p class="intro">
+      Operated by <strong>{site.owner}</strong> — your trusted partner for emergency refuels,
+      org bulk contracts, and ship financing across the Stanton system.
+    </p>
+    <div class="hero-actions">
+      <a href="/contracts" class="btn btn-primary">Submit Contract</a>
+      <a href="#services" class="btn btn-secondary">View Rates</a>
+    </div>
+  </div>
+  <div class="scanline" aria-hidden="true"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg, rgba(10, 14, 23, 0.95) 0%, rgba(10, 14, 23, 0.7) 45%, rgba(10, 14, 23, 0.4) 100%),
+      linear-gradient(to top, var(--bg-deep) 0%, transparent 30%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 6rem 0 4rem;
+    max-width: 680px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+  }
+
+  .tagline {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--accent-cyan);
+    margin-bottom: 1.25rem;
+  }
+
+  .intro {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  .intro strong {
+    color: var(--text-primary);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .scanline {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 3;
+  }
+</style>

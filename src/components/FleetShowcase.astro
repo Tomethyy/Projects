@@ -1,0 +1,140 @@
+---
+import { fleet } from '../data/fleet';
+---
+
+<section id="fleet" class="section fleet-section">
+  <div class="container">
+    <p class="section-label">// Fleet Registry</p>
+    <h2 class="section-title">Reserve Fleet</h2>
+    <div class="fleet-grid">
+      {fleet.map((ship) => (
+        <article class:list={['panel', 'fleet-card', { featured: ship.featured }]}>
+          <div class="fleet-image-wrap">
+            <img src={ship.image} alt={ship.name} loading="lazy" />
+            {ship.featured && <span class="badge">Flagship</span>}
+          </div>
+          <div class="fleet-body">
+            <h3>{ship.name}</h3>
+            <p class="role mono">{ship.role}</p>
+            <p class="desc">{ship.description}</p>
+            <dl class="specs mono">
+              {Object.entries(ship.specs).map(([key, value]) => (
+                <>
+                  <dt>{key.replace(/([A-Z])/g, ' $1').trim()}</dt>
+                  <dd>{value}</dd>
+                </>
+              ))}
+            </dl>
+            {'rsiUrl' in ship && ship.rsiUrl && (
+              <a href={ship.rsiUrl} target="_blank" rel="noopener noreferrer" class="rsi-link">
+                Official RSI specs →
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fleet-section {
+    background: rgba(0, 40, 80, 0.08);
+  }
+
+  .fleet-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .fleet-card.featured {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .fleet-card.featured {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .fleet-card:not(.featured) {
+    max-width: 480px;
+  }
+
+  .fleet-image-wrap {
+    position: relative;
+    background: var(--bg-deep);
+    min-height: 200px;
+  }
+
+  .fleet-card.featured .fleet-image-wrap {
+    min-height: 280px;
+  }
+
+  .fleet-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: inherit;
+  }
+
+  .badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.6rem;
+    background: rgba(0, 212, 255, 0.2);
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+  }
+
+  .fleet-body {
+    padding: 1.5rem;
+  }
+
+  .fleet-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .role {
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+  }
+
+  .desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .specs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.35rem 1rem;
+    font-size: 0.8rem;
+    margin: 0 0 1rem;
+  }
+
+  .specs dt {
+    color: var(--text-muted);
+    text-transform: capitalize;
+  }
+
+  .specs dd {
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  .rsi-link {
+    font-size: 0.85rem;
+  }
+</style>

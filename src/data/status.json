@@ -1,0 +1,9 @@
+{
+  "lastUpdated": "2954-05-23T14:30:00Z",
+  "entries": [
+    { "label": "Gemini-01", "status": "ONLINE", "detail": "Checkmate", "level": "online" },
+    { "label": "Reserve Desk", "status": "OPEN", "detail": "aUEC transfers < 2h", "level": "online" },
+    { "label": "Refuel Queue", "status": "LOW", "detail": "~15 min wait", "level": "online" },
+    { "label": "Loan Processing", "status": "ACTIVE", "detail": "Same-day pre-approval", "level": "online" }
+  ]
+}

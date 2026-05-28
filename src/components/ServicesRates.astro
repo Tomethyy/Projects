@@ -1,0 +1,89 @@
+---
+import { refuelRates, bankingRates } from '../data/rates';
+---
+
+<section id="services" class="section">
+  <div class="container">
+    <p class="section-label">// Services & Rates</p>
+    <h2 class="section-title">Pricing Terminal</h2>
+    <div class="grid-2">
+      <div>
+        <h3 class="column-title">Refueling</h3>
+        <ul class="rate-list">
+          {refuelRates.map((rate) => (
+            <li class="panel rate-card">
+              <div class="rate-header">
+                <h4>{rate.name}</h4>
+                <span class="mono price">{rate.price}</span>
+              </div>
+              <p>{rate.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="column-title">Banking</h3>
+        <ul class="rate-list">
+          {bankingRates.map((rate) => (
+            <li class="panel rate-card">
+              <div class="rate-header">
+                <h4>{rate.name}</h4>
+                <span class="mono price">{rate.price}</span>
+              </div>
+              <p>{rate.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .column-title {
+    font-size: 1.25rem;
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--accent-cyan-dim);
+  }
+
+  .rate-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .rate-card {
+    padding: 1.25rem;
+    list-style: none;
+  }
+
+  .rate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .rate-card h4 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .price {
+    font-size: 0.8rem;
+    color: var(--accent-amber);
+    white-space: nowrap;
+  }
+
+  .rate-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+</style>

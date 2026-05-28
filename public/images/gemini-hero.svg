@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Starfarer Gemini placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#0a0e17"/>
+    </linearGradient>
+    <linearGradient id="ship" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a3a5c"/>
+      <stop offset="50%" style="stop-color:#2a5a8c"/>
+      <stop offset="100%" style="stop-color:#1a3a5c"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="200" cy="150" r="1" fill="#fff" opacity="0.6"/>
+  <circle cx="400" cy="80" r="1.5" fill="#fff" opacity="0.4"/>
+  <circle cx="800" cy="120" r="1" fill="#fff" opacity="0.5"/>
+  <circle cx="1200" cy="200" r="1" fill="#fff" opacity="0.7"/>
+  <circle cx="1400" cy="90" r="1.2" fill="#fff" opacity="0.3"/>
+  <circle cx="600" cy="250" r="0.8" fill="#fff" opacity="0.5"/>
+  <!-- Starfarer Gemini silhouette -->
+  <g transform="translate(800,450)" filter="url(#glow)">
+  <ellipse cx="0" cy="20" rx="380" ry="40" fill="url(#ship)" opacity="0.9"/>
+  <rect x="-320" y="-30" width="640" height="50" rx="8" fill="url(#ship)"/>
+  <rect x="-180" y="-80" width="360" height="55" rx="6" fill="#2a6a9c"/>
+  <rect x="-420" y="-10" width="120" height="25" rx="4" fill="#00d4ff" opacity="0.6"/>
+  <rect x="300" y="-10" width="120" height="25" rx="4" fill="#00d4ff" opacity="0.6"/>
+  <circle cx="-450" cy="5" r="18" fill="#1a4a6c" stroke="#00d4ff" stroke-width="2"/>
+  <circle cx="450" cy="5" r="18" fill="#1a4a6c" stroke="#00d4ff" stroke-width="2"/>
+  <rect x="-60" y="-120" width="120" height="45" rx="4" fill="#3a7aac"/>
+  </g>
+  <text x="800" y="820" text-anchor="middle" fill="#8ba3c7" font-family="monospace" font-size="18">Replace with your Starfarer Gemini screenshot � public/images/gemini-hero.jpg</text>
+</svg>

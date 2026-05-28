@@ -1,0 +1,83 @@
+---
+import { faqItems, faqCategories } from '../data/faq';
+---
+
+<section id="faq" class="section faq-section">
+  <div class="container">
+    <p class="section-label">// Knowledge Base</p>
+    <h2 class="section-title">FAQ</h2>
+    {faqCategories.map((category) => (
+      <div class="faq-category">
+        <h3 class="category-title">{category}</h3>
+        <div class="faq-list">
+          {faqItems
+            .filter((item) => item.category === category)
+            .map((item, i) => (
+              <details class="panel faq-item" name={`faq-${category}`}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background: rgba(0, 40, 80, 0.06);
+  }
+
+  .faq-category {
+    margin-bottom: 2rem;
+  }
+
+  .category-title {
+    font-size: 1.1rem;
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .faq-item {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    float: right;
+    font-family: var(--font-mono);
+    color: var(--accent-cyan);
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+
+  .faq-item p {
+    margin: 0;
+    padding: 0 1.25rem 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    border-top: 1px solid var(--accent-cyan-dim);
+    padding-top: 1rem;
+  }
+</style>

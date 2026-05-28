@@ -1,0 +1,157 @@
+---
+import { site, navLinks } from '../config/site';
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">TSR</span>
+      <span class="logo-text">{site.name}</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        {navLinks.map(({ href, label }) => (
+          <li>
+            <a href={href} class:list={[{ 'nav-cta': href === '/contracts' }]}>{label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!open));
+  });
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 14, 23, 0.92);
+    border-bottom: 1px solid var(--accent-cyan-dim);
+    backdrop-filter: blur(12px);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .logo:hover {
+    color: var(--text-primary);
+  }
+
+  .logo-mark {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    letter-spacing: 0.1em;
+  }
+
+  .logo-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .nav a:hover,
+  .nav a.nav-cta {
+    color: var(--accent-cyan);
+  }
+
+  .nav-cta {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--accent-cyan-dim);
+    border-radius: var(--radius);
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--accent-cyan);
+  }
+
+  @media (max-width: 900px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 23, 0.98);
+      border-bottom: 1px solid var(--accent-cyan-dim);
+      padding: 1rem;
+      display: none;
+    }
+
+    .nav.open {
+      display: block;
+    }
+
+    .nav ul {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .logo-text {
+      display: none;
+    }
+  }
+</style>
