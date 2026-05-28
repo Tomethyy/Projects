@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContractForm from '../components/ContractForm.astro';
+
+const typeParam = Astro.url.searchParams.get('type') ?? '';
+---
+
+<BaseLayout title="Submit Contract" description="Submit a refuel, financing, or recruitment contract to Tomethy's Stellar Reserve.">
+  <section class="section contracts-page">
+    <div class="container">
+      <p class="section-label">// Contract Terminal</p>
+      <h1 class="section-title">Submit Contract</h1>
+      <p class="intro">
+        Log your request with the Reserve desk. Emergency refuels, bulk contracts, loan applications,
+        and recruitment inquiries are all handled through this channel.
+      </p>
+      <ContractForm initialType={typeParam} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contracts-page {
+    padding-top: 3rem;
+  }
+
+  .intro {
+    color: var(--text-muted);
+    max-width: 640px;
+    margin-bottom: 2rem;
+  }
+</style>

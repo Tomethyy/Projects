@@ -1,0 +1,147 @@
+---
+import { locations } from '../data/locations';
+---
+
+<section id="coverage" class="section">
+  <div class="container">
+    <p class="section-label">// Coverage Map</p>
+    <h2 class="section-title">Stanton Operations</h2>
+    <div class="map-layout">
+      <div class="map-visual panel" aria-hidden="true">
+        <svg viewBox="0 0 100 60" class="stanton-map">
+          <ellipse cx="50" cy="30" rx="45" ry="25" fill="none" stroke="var(--accent-cyan-dim)" stroke-width="0.5" />
+          {locations.map((loc) => (
+            <g transform={`translate(${loc.x}, ${loc.y})`}>
+              <circle
+                r="2.5"
+                class:list={['poi-dot', { serviced: loc.serviced, unserviced: !loc.serviced }]}
+              />
+            </g>
+          ))}
+        </svg>
+        <p class="map-legend mono">Stanton system — hover locations for details</p>
+      </div>
+      <ul class="location-list">
+        {locations.map((loc) => (
+          <li class="panel location-card" data-serviced={loc.serviced}>
+            <div class="loc-header">
+              <h4>{loc.name}</h4>
+              <span class:list={['status-pill', loc.serviced ? 'yes' : 'no']}>
+                {loc.serviced ? 'Serviced' : 'Limited'}
+              </span>
+            </div>
+            <p class="mono system">{loc.system}</p>
+            <p class="eta"><strong>ETA:</strong> {loc.eta}</p>
+            <p class="notes">{loc.notes}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .map-layout {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  @media (max-width: 900px) {
+    .map-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .map-visual {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+
+  .stanton-map {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .poi-dot.serviced {
+    fill: var(--accent-cyan);
+  }
+
+  .poi-dot.unserviced {
+    fill: var(--accent-amber);
+  }
+
+  .map-legend {
+    margin: 1rem 0 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .location-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .location-card {
+    padding: 1rem 1.25rem;
+    list-style: none;
+  }
+
+  .loc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .loc-header h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .status-pill {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  .status-pill.yes {
+    color: var(--accent-green);
+    border: 1px solid rgba(61, 255, 138, 0.4);
+  }
+
+  .status-pill.no {
+    color: var(--accent-amber);
+    border: 1px solid rgba(255, 176, 32, 0.4);
+  }
+
+  .system {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0 0 0.5rem;
+  }
+
+  .eta {
+    margin: 0 0 0.35rem;
+    font-size: 0.9rem;
+  }
+
+  .notes {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>

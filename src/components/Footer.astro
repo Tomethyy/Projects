@@ -1,0 +1,107 @@
+---
+import { site } from '../config/site';
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">TSR</span>
+      <p>{site.name}</p>
+      <p class="tagline">{site.tagline}</p>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      {site.discordUrl !== '#' && (
+        <a href={site.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+      )}
+      {site.rsiOrgUrl !== '#' && (
+        <a href={site.rsiOrgUrl} target="_blank" rel="noopener noreferrer">RSI Organization</a>
+      )}
+      <a href="/contracts">Submit Contract</a>
+    </div>
+    <div class="footer-legal">
+      <p>
+        Fan site operated by {site.owner}. Not affiliated with Cloud Imperium Games.
+        Star Citizen® is a trademark of Cloud Imperium Games Corporation.
+      </p>
+      <p>
+        In-universe aUEC services are for roleplay unless otherwise agreed out-of-character.
+        Ship imagery: replace placeholders with your own in-game screenshots.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--accent-cyan-dim);
+    background: rgba(8, 12, 20, 0.95);
+    padding: 3rem 0 2rem;
+    margin-top: 2rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 700px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer-brand .logo-mark {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-brand p {
+    margin: 0 0 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  .tagline {
+    color: var(--text-muted);
+    font-size: 0.85rem !important;
+  }
+
+  .footer-links h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.9rem;
+  }
+
+  .footer-legal {
+    grid-column: 1 / -1;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--accent-cyan-dim);
+  }
+
+  .footer-legal p {
+    margin: 0 0 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+</style>

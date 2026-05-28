@@ -1,0 +1,59 @@
+---
+import { testimonials } from '../data/testimonials';
+---
+
+<section id="testimonials" class="section">
+  <div class="container">
+    <p class="section-label">// Client Transmissions</p>
+    <h2 class="section-title">Testimonials</h2>
+    <div class="testimonial-grid">
+      {testimonials.map((t) => (
+        <blockquote class="panel testimonial-card">
+          <p class="quote">"{t.quote}"</p>
+          <footer>
+            <cite class="author">{t.author}</cite>
+            <span class="meta mono">{t.ship} · {t.org}</span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+
+  .testimonial-card {
+    margin: 0;
+    padding: 1.5rem;
+  }
+
+  .quote {
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .testimonial-card footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent-cyan);
+  }
+
+  .meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+</style>

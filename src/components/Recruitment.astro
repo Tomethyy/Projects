@@ -1,0 +1,108 @@
+---
+import { recruitment } from '../data/recruitment';
+import { site } from '../config/site';
+---
+
+<section id="recruitment" class="section">
+  <div class="container">
+    <p class="section-label">// Personnel</p>
+    <h2 class="section-title">Join the Reserve</h2>
+    <p class="pitch">{recruitment.pitch}</p>
+    <div class="grid-2 roles-grid">
+      {recruitment.roles.map((role) => (
+        <div class="panel role-card">
+          <h3>{role.title}</h3>
+          <ul>
+            {role.requirements.map((req) => (
+              <li>{req}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="panel benefits-card">
+      <h3>Benefits</h3>
+      <ul class="benefits-list">
+        {recruitment.benefits.map((b) => (
+          <li>{b}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="recruit-actions">
+      <a href="/contracts?type=recruitment" class="btn btn-primary">Apply via Contract Form</a>
+      {site.discordUrl !== '#' && (
+        <a href={site.discordUrl} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          Discord
+        </a>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pitch {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin-bottom: 2rem;
+  }
+
+  .role-card {
+    padding: 1.5rem;
+  }
+
+  .role-card h3 {
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+  }
+
+  .role-card ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .role-card li {
+    margin-bottom: 0.5rem;
+  }
+
+  .benefits-card {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .benefits-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .benefits-list {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .benefits-list li {
+    padding-left: 1.25rem;
+    position: relative;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .benefits-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-cyan);
+  }
+
+  .recruit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+</style>
