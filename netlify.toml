@@ -1,4 +1,0 @@
-[build]
-  base = "tomethys-stellar-reserve"
-  command = "npm run build"
-  publish = "dist"
