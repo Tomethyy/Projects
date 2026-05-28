@@ -3,9 +3,10 @@ export const site = {
   tagline: 'Fuel the fleet. Fund the future.',
   owner: 'Tomethy',
   email: 'tomethysbank@proton.me',
-  discordUrl: import.meta.env.PUBLIC_DISCORD_URL ?? '#',
+  discordUrl: import.meta.env.PUBLIC_DISCORD_URL ?? 'https://discord.gg/twEqUwa8fj',
   rsiOrgUrl: import.meta.env.PUBLIC_RSI_ORG_URL ?? '#',
-  formspreeId: import.meta.env.PUBLIC_FORMSPREE_ID ?? '',
+  formspreeId:
+    import.meta.env.PUBLIC_FORMSPREE_ID ?? 'https://formspree.io/f/maqkvnpl',
   responseTime: '24 hours',
 } as const;
 
