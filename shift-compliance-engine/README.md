@@ -7,6 +7,7 @@ All-in-One Shift Planning and Compliance Engine (Phase 0–4 skeleton + core flo
 - **Backend:** .NET 8, PostgreSQL, EF Core, ASP.NET Core Identity + JWT
 - **Web:** `web/employee-portal`, `web/planner-app` (Vite + React + TypeScript + react-i18next)
 - **Shared client:** `web/shift-api-client` (`@shift-engine/api-client`, `file:` dependency from both apps)
+- **Shared UI:** `web/shift-ui` (`@shift-engine/ui` — tokens, Button/Card/Badge, `VirtualRosterGrid`)
 - **Compliance:** `ShiftEngine.Compliance.ArbZG` (weekly hours, daily rest)
 - **Replanning:** `ShiftEngine.Replanning` + `SickLeaveReplanService`
 
@@ -35,15 +36,33 @@ All-in-One Shift Planning and Compliance Engine (Phase 0–4 skeleton + core flo
 5. **Web UIs:** from repo root:
 
    ```powershell
-   cd web/employee-portal; npm install; npm run dev -- --port 5173
    cd web/planner-app; npm install; npm run dev -- --port 5174
+   cd web/employee-portal; npm install; npm run dev -- --port 5173
    ```
 
-Default API URL in dev: `https://localhost:7xxx` or `http://localhost:5xxx` — check console output; set `VITE_API_URL` in each web app `.env` if needed.
+   - **Planner (Phase 2 UI):** [http://localhost:5174](http://localhost:5174) — sidebar nav, roster, deployment grid, personnel, positions, compliance, rules, audit.
+   - **Employee portal:** [http://localhost:5173](http://localhost:5173)
+   - **API / Swagger:** [http://localhost:5050/swagger](http://localhost:5050/swagger) (root `/` has no HTML UI)
+
+   Status: [docs/PHASE2_STATUS.md](docs/PHASE2_STATUS.md)
 
 ## Phase 0 exit checklist
 
 See [docs/PHASE0_CHECKLIST.md](docs/PHASE0_CHECKLIST.md).
+
+## Phase 1 (Tier 1 roster)
+
+- **Team month generate:** `POST /api/Roster/generate-team-month` with `{ "year": 2026, "month": 3 }` — all active employees, automatic 6/2–6/3 rhythm from each `contractedHoursMonthly`.
+- **Matrix grid:** `GET /api/Roster/matrix?year=2026&month=3` — planner UI shows sortable employee × day table.
+- **Publish:** `POST /api/Roster/publish` with `{ "rosterPeriodId": "…" }`.
+
+Checklist: [docs/PHASE1_CHECKLIST.md](docs/PHASE1_CHECKLIST.md).
+
+**Phase 1 tools in planner:** collapsible sections for compliance (ArbZG + BV), leave/carryover, SecPlan dry-run, and audit log. Employee portal shows **published** shifts only and auto-loads the selected month.
+
+**UI overhaul (after Phase 1):** [docs/PHASE2_UI.md](docs/PHASE2_UI.md).
+
+**Personnel & positions (Phase 1):** sample CSV in [installer/personnel/](installer/personnel/). Import via planner master-data sections or `POST /api/personnel/import` and `POST /api/personnel/positions/import`.
 
 ## Pre-build / SecPlan import
 

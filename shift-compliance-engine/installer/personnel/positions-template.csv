@@ -1,0 +1,5 @@
+Name;WindowStart;WindowEnd;RequiredHeadcount;MinRequiredFemale;MinRequiredMale;GenderIrrelevant;RequiredQualificationCode;BufferPercent
+Haupteingang Tag;06:00;14:00;2;1;0;0;SCHUER;10
+Haupteingang Spät;14:00;22:00;2;1;1;0;SCHUER;10
+Revier Nord;22:00;06:00;1;0;0;1;SCHUER;15
+LSKP Schleuse;06:00;18:00;1;1;0;0;LSKP;5

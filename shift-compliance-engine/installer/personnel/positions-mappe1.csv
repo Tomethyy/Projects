@@ -1,0 +1,26 @@
+Name;WindowStart;WindowEnd;RequiredHeadcount;MinRequiredFemale;MinRequiredMale;GenderIrrelevant;RequiredQualificationCode;BufferPercent
+Früh GAT;06:00;14:00;2;1;1;0;LSKP;10
+Spät GAT;14:00;22:00;2;1;1;0;LSKP;10
+Nacht GAT;22:00;06:00;2;1;1;0;LSKP;10
+Früh Tor 14;06:00;14:00;2;1;1;0;LSKP;10
+Spät Tor 14;14:00;22:00;2;1;1;0;LSKP;10
+Nacht Tor 14;22:00;06:00;2;1;1;0;LSKP;10
+Früh Z.Tor 14;06:00;14:00;1;0;0;1;Security;10
+Spät Z.Tor 14;14:00;22:00;1;0;0;1;Security;10
+Früh Mobile;06:00;14:30;2;1;1;0;LSKP;10
+Spät Mobile;14:30;23:00;2;1;1;0;LSKP;10
+Früh 30;06:00;14:00;1;0;0;1;LSKP;10
+Spät 30;14:00;22:00;1;0;0;1;LSKP;10
+Nacht 30;22:00;06:00;1;0;0;1;LSKP;10
+Früh 6;06:00;14:00;1;0;0;1;Security;10
+Spät 6;14:00;22:00;1;0;0;1;Security;10
+Früh 9;06:00;14:00;1;0;0;1;Security;10
+Spät 9;14:00;22:00;1;0;0;1;Security;10
+Nacht 9;22:00;06:00;1;0;0;1;Security;10
+Früh 3;06:00;14:00;1;0;0;1;Security;10
+Spät 3;14:00;22:00;1;0;0;1;Security;10
+Nacht 3;22:00;06:00;1;0;0;1;Security;10
+Früh Bordkarte;04:30;12:30;1;0;0;1;Security;10
+Spät Bordkarte;12:30;21:00;1;0;0;1;Security;10
+Früh 2;06:00;15:00;1;0;0;1;Security;10
+Spät 2;15:00;00:00;1;0;0;1;Security;10

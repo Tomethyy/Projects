@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@shift-engine/api-client": "file:../shift-api-client",
+    "@shift-engine/ui": "file:../shift-ui",
     "i18next": "^26.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

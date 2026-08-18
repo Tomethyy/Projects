@@ -61,13 +61,18 @@ public sealed class DailyRestRule : IComplianceRule
             for (var i = 1; i < days.Count; i++)
             {
                 if (days[i].WorkDate == days[i - 1].WorkDate.AddDays(1))
-                {
-                    var prevEnd = days[i - 1].ShiftTier.EndLocal.ToTimeSpan();
-                    var nextStart = days[i].ShiftTier.StartLocal.ToTimeSpan();
-                    var rest = (TimeSpan.FromDays(1) - prevEnd) + nextStart;
-                    if (rest.TotalHours < 11)
-                        yield return new ComplianceFinding(Code, "Less than 11h rest between consecutive shifts", true, g.Key, days[i].WorkDate);
-                }
+            {
+                var prev = days[i - 1];
+                var prevDay = prev.WorkDate;
+                var nextDay = days[i].WorkDate;
+                var prevEndDt = prev.ShiftTier.EndLocal > prev.ShiftTier.StartLocal
+                    ? prevDay.ToDateTime(prev.ShiftTier.EndLocal)
+                    : prevDay.ToDateTime(prev.ShiftTier.EndLocal).AddDays(1);
+                var nextStartDt = nextDay.ToDateTime(days[i].ShiftTier.StartLocal);
+                var rest = nextStartDt - prevEndDt;
+                if (rest.TotalHours < 11)
+                    yield return new ComplianceFinding(Code, "Less than 11h rest between consecutive shifts", true, g.Key, days[i].WorkDate);
+            }
             }
         }
     }

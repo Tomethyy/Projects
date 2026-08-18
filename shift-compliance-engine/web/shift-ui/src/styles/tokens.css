@@ -1,0 +1,27 @@
+/* Shared design tokens — import in app entry: @shift-engine/ui/tokens.css */
+:root {
+  --shift-bg: #0f1117;
+  --shift-surface: #181b24;
+  --shift-surface-2: #1f2430;
+  --shift-border: #2a3142;
+  --shift-text: #e8eaef;
+  --shift-text-muted: #9aa3b5;
+  --shift-accent: #6366f1;
+  --shift-accent-hover: #818cf8;
+  --shift-success: #22c55e;
+  --shift-warning: #f59e0b;
+  --shift-danger: #ef4444;
+  --shift-radius: 10px;
+  --shift-font: 'Segoe UI', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --shift-bg: #f4f6fb;
+    --shift-surface: #ffffff;
+    --shift-surface-2: #f8fafc;
+    --shift-border: #e2e8f0;
+    --shift-text: #0f172a;
+    --shift-text-muted: #64748b;
+  }
+}

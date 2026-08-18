@@ -11,5 +11,16 @@
   "locale": "Language",
   "colDate": "Date",
   "colTier": "Shift",
-  "colCode": "Code"
+  "colCode": "Code",
+  "refresh": "Refresh",
+  "publishedOnlyHint": "Only published roster periods are shown.",
+  "draftNotPublished": "A draft exists for this month but has not been published yet.",
+  "noShifts": "No published shifts for this month.",
+  "loginSubtitle": "Sign in to view your roster.",
+  "emptyDraftTitle": "Not published yet",
+  "emptyDraftBody": "Your planner has created a draft for this month. You will see your shifts here once it is published.",
+  "emptyPublishedTitle": "No shifts this month",
+  "shiftList": "Your shifts",
+  "shiftOnDay": "Shifts on {{date}}",
+  "selectDay": "Select {{date}}"
 }

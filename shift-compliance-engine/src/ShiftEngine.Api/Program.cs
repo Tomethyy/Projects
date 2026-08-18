@@ -36,7 +36,13 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 var jwtKey = builder.Configuration["Jwt:Key"] ?? "dev-only-change-me-32chars-min!!";
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+// Identity registers cookie auth; without explicit JWT defaults, [Authorize] challenges
+// via cookies and redirects to /Account/Login (missing) → 404 on API routes.
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
     .AddJwtBearer(o =>
     {
         o.TokenValidationParameters = new TokenValidationParameters
@@ -45,7 +51,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+            RoleClaimType = System.Security.Claims.ClaimTypes.Role
         };
     });
 builder.Services.AddAuthorization();

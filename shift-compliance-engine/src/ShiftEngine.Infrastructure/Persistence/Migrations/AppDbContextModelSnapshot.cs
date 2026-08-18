@@ -246,6 +246,15 @@ namespace ShiftEngine.Infrastructure.Persistence.Migrations
                     b.Property<int>("LskpWeightOnSecurityPost")
                         .HasColumnType("integer");
 
+                    b.Property<int>("MinRequiredFemale")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MinRequiredMale")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsGenderIrrelevant")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");

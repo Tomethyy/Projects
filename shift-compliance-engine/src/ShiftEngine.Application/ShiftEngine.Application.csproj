@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ShiftEngine.Domain\ShiftEngine.Domain.csproj" />
     <ProjectReference Include="..\ShiftEngine.Replanning\ShiftEngine.Replanning.csproj" />
+    <ProjectReference Include="..\ShiftEngine.Compliance.ArbZG\ShiftEngine.Compliance.ArbZG.csproj" />
   </ItemGroup>
 
   <ItemGroup>

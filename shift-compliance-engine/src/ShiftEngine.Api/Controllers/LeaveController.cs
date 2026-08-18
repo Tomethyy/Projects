@@ -14,6 +14,19 @@ public class LeaveController(AppDbContext db) : ControllerBase
 {
     public record FreezeCarryoverRequest(int CarryoverYear, Guid? EmployeeId);
 
+    [HttpGet]
+    [Authorize(Roles = SecurityRoles.OperationsReaders)]
+    public async Task<List<LeaveRecord>> List([FromQuery] int? year, CancellationToken ct)
+    {
+        var tenantId = User.GetTenantId();
+        var q = db.LeaveRecords
+            .Include(l => l.Employee)
+            .Where(l => l.TenantId == tenantId);
+        if (year is not null)
+            q = q.Where(l => l.StartDate.Year == year || l.CarryoverYear == year);
+        return await q.OrderBy(l => l.StartDate).AsNoTracking().ToListAsync(ct);
+    }
+
     [HttpPost]
     [Authorize(Roles = SecurityRoles.OperationsWriters)]
     public async Task<ActionResult<Guid>> Create([FromBody] LeaveRecord leave, CancellationToken ct)

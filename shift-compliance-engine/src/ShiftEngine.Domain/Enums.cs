@@ -10,7 +10,9 @@ public enum LegacyReferenceMode
 public enum RosterPatternKind
 {
     SixOnTwoOff = 0,
-    SixOnThreeOff = 1
+    SixOnThreeOff = 1,
+    /// <summary>6 on / 2 off, then 6 on / 3 off; scaled from contracted monthly hours (174h reference).</summary>
+    AlternatingSixTwoSixThree = 2
 }
 
 public enum LeaveSource

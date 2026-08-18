@@ -11,5 +11,16 @@
   "locale": "Sprache",
   "colDate": "Datum",
   "colTier": "Schicht",
-  "colCode": "Code"
+  "colCode": "Code",
+  "refresh": "Aktualisieren",
+  "publishedOnlyHint": "Es werden nur veröffentlichte Planzeiträume angezeigt.",
+  "draftNotPublished": "Für diesen Monat existiert ein Entwurf, der noch nicht veröffentlicht wurde.",
+  "noShifts": "Keine veröffentlichten Schichten für diesen Monat.",
+  "loginSubtitle": "Melden Sie sich an, um Ihren Dienstplan zu sehen.",
+  "emptyDraftTitle": "Noch nicht veröffentlicht",
+  "emptyDraftBody": "Für diesen Monat existiert ein Entwurf. Ihre Schichten erscheinen hier nach der Veröffentlichung.",
+  "emptyPublishedTitle": "Keine Schichten in diesem Monat",
+  "shiftList": "Ihre Schichten",
+  "shiftOnDay": "Schichten am {{date}}",
+  "selectDay": "{{date}} auswählen"
 }

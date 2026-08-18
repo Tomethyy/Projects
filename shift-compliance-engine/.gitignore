@@ -1,0 +1,9 @@
+# Build / IDE
+bin/
+obj/
+.vs/
+*.user
+artifacts/
+
+# Node (per-app gitignores cover node_modules; lockfiles are committed)
+dist/

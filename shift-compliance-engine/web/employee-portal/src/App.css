@@ -53,3 +53,7 @@ label {
 .roster-table th {
   background: #f7f7f7;
 }
+.draft-notice {
+  color: #b06000;
+  font-weight: 500;
+}

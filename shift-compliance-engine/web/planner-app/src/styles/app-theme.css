@@ -1,0 +1,396 @@
+/* Phase 2 design tokens — aliases to @shift-engine/ui */
+:root {
+  --app-bg: var(--shift-bg);
+  --app-surface: var(--shift-surface);
+  --app-surface-2: var(--shift-surface-2);
+  --app-border: var(--shift-border);
+  --app-text: var(--shift-text);
+  --app-text-muted: var(--shift-text-muted);
+  --app-accent: var(--shift-accent);
+  --app-accent-hover: var(--shift-accent-hover);
+  --app-success: var(--shift-success);
+  --app-warning: var(--shift-warning);
+  --app-danger: var(--shift-danger);
+  --app-radius: var(--shift-radius);
+  --app-sidebar-w: 240px;
+  --app-font: var(--shift-font);
+}
+
+/* Legacy block kept for components not yet migrated to shift-ui class names */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--app-font);
+  background: var(--app-bg);
+  color: var(--app-text);
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: var(--app-sidebar-w);
+  background: var(--app-surface);
+  border-right: 1px solid var(--app-border);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.75rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.app-brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.5rem 0.75rem 1rem;
+  letter-spacing: -0.02em;
+}
+
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.app-nav a {
+  color: var(--app-text-muted);
+  text-decoration: none;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.app-nav a:hover {
+  background: var(--app-surface-2);
+  color: var(--app-text);
+}
+
+.app-nav a.active {
+  background: color-mix(in srgb, var(--app-accent) 18%, transparent);
+  color: var(--app-accent-hover);
+  font-weight: 600;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.app-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-surface);
+}
+
+.app-topbar-user {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.app-user-email {
+  font-size: 0.88rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-user-tenant {
+  font-size: 0.72rem;
+  color: var(--app-text-muted);
+  font-family: ui-monospace, monospace;
+}
+
+.app-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.publish-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--app-radius);
+  margin-bottom: 1rem;
+  background: color-mix(in srgb, var(--app-warning) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--app-warning) 55%, transparent);
+}
+
+.publish-banner p {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+  color: var(--app-text-muted);
+}
+
+.app-content {
+  padding: 1.25rem 1.5rem 2rem;
+  flex: 1;
+}
+
+.page-header {
+  margin-bottom: 1.25rem;
+}
+
+.page-header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: 0.95rem;
+}
+
+.card {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+  color: var(--app-text);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn:hover {
+  background: var(--app-border);
+}
+
+.btn-primary {
+  background: var(--app-accent);
+  border-color: var(--app-accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--app-accent-hover);
+}
+
+.btn-danger {
+  background: color-mix(in srgb, var(--app-danger) 15%, transparent);
+  border-color: var(--app-danger);
+  color: var(--app-danger);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-draft {
+  background: color-mix(in srgb, var(--app-warning) 20%, transparent);
+  color: var(--app-warning);
+}
+
+.badge-published {
+  background: color-mix(in srgb, var(--app-success) 20%, transparent);
+  color: var(--app-success);
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.alert-error {
+  background: color-mix(in srgb, var(--app-danger) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--app-danger) 40%, transparent);
+  color: var(--app-danger);
+}
+
+.alert-info {
+  background: color-mix(in srgb, var(--app-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--app-accent) 35%, transparent);
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 0.75rem;
+}
+
+label.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--app-text-muted);
+}
+
+label.field input,
+label.field select,
+label.field textarea {
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+  color: var(--app-text);
+  font: inherit;
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+table.data-table th,
+table.data-table td {
+  border-bottom: 1px solid var(--app-border);
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+}
+
+table.data-table th {
+  background: var(--app-surface-2);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: radial-gradient(ellipse at top, color-mix(in srgb, var(--app-accent) 12%, var(--app-bg)), var(--app-bg));
+}
+
+.login-card {
+  width: min(400px, 100%);
+}
+
+.matrix-wrap {
+  overflow: auto;
+  max-height: 70vh;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+}
+
+.matrix-table {
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.matrix-table th,
+.matrix-table td {
+  border: 1px solid var(--app-border);
+  padding: 0.25rem;
+}
+
+.matrix-table .sticky-col {
+  position: sticky;
+  left: 0;
+  background: var(--app-surface);
+  z-index: 2;
+}
+
+.off-cell {
+  color: var(--app-text-muted);
+  text-align: center;
+}
+
+.cell-assign {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.post-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--app-accent-hover);
+  max-width: 4.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.post-unassigned {
+  color: var(--app-text-muted);
+  font-weight: 400;
+}
+
+.tier-select {
+  font-size: 0.7rem;
+  max-width: 4.5rem;
+  background: var(--app-surface-2);
+  color: var(--app-text);
+  border: 1px solid var(--app-border);
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    flex-direction: column;
+  }
+  .app-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .app-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

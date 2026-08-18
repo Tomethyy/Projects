@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ShiftEngine.Domain;
+using ShiftEngine.Infrastructure.Audit;
 using ShiftEngine.Infrastructure.Auth;
 using ShiftEngine.Infrastructure.Export;
 using ShiftEngine.Infrastructure.Identity;
+using ShiftEngine.Infrastructure.Imports;
 using ShiftEngine.Infrastructure.Persistence;
 using ShiftEngine.Infrastructure.SickLeave;
 
@@ -26,6 +28,8 @@ public static class InfrastructureExtensions
         services.AddScoped<JwtTokenIssuer>();
         services.AddScoped<SickLeaveReplanService>();
         services.AddScoped<RosterExcelExportService>();
+        services.AddScoped<PersonnelImportService>();
+        services.AddScoped<AuditLogService>();
         return services;
     }
 }

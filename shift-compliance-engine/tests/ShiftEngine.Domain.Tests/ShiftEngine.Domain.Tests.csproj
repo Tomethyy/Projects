@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\ShiftEngine.Application\ShiftEngine.Application.csproj" />
     <ProjectReference Include="..\..\src\ShiftEngine.Domain\ShiftEngine.Domain.csproj" />
   </ItemGroup>
 

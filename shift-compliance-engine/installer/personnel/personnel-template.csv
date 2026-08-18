@@ -1,0 +1,6 @@
+PersonnelNumber;DisplayName;ContractedHoursMonthly;GenderCode;PrimaryRole;Email;ExternalLegacyId
+1001;Max Mustermann;174;M;Security;;SEC-1001
+1002;Erika Beispiel;174;F;Security;;SEC-1002
+1003;Alex Teilzeit;130;D;Security;;SEC-1003
+1004;Jordan Security;174;F;LSKP;;SEC-1004
+1005;Sam Security;174;M;Security;;SEC-1005
